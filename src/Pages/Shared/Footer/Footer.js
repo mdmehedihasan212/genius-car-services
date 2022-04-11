@@ -4,7 +4,7 @@ import './Footer.css';
 const Footer = () => {
     return (
         <div>
-            <p>Copyright @2022-2024</p>
+            <p>Copyright 2022</p>
         </div>
     );
 };
