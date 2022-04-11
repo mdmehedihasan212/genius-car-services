@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Nav, Navbar } from 'react-bootstrap';
 import './Header.css';
-import logo from '../../../images/logo-black.png';
+import logo from '../../../images/logo.png';
 
 const Header = () => {
     return (
@@ -11,15 +11,15 @@ const Header = () => {
                     <Navbar.Brand href="/">
                         <img
                             src={logo}
-                            height="30"
+                            height="35"
                             className="d-inline-block align-top"
                             alt="React Bootstrap logo"
                         />
                     </Navbar.Brand>
-                    <Nav className="me-auto">
-                        <Nav.Link href="#home">Home</Nav.Link>
-                        <Nav.Link href="#features">Features</Nav.Link>
-                        <Nav.Link href="#pricing">Pricing</Nav.Link>
+                    <Nav className="ms-auto">
+                        <Nav.Link className='text-white fw-bold' href="/">Home</Nav.Link>
+                        <Nav.Link className='text-white fw-bold' href="/services">Services</Nav.Link>
+                        <Nav.Link className='text-white fw-bold' href="/experts">Our Experts</Nav.Link>
                     </Nav>
                 </Container>
             </Navbar>
