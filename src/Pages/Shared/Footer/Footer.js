@@ -7,7 +7,7 @@ const Footer = () => {
 
     return (
         <div>
-            <p className='text-center m-5'>{date} Copyright &copy; www.mehedihasn.com</p>
+            <p className='text-center mt-5'>Copyright &copy; {date}</p>
         </div>
     );
 };
