@@ -1,26 +1,37 @@
 import React from 'react';
-import { Container, Nav, Navbar } from 'react-bootstrap';
 import './Header.css';
 import logo from '../../../images/logo.png';
+import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
     return (
         <div>
-            <Navbar bg="primary" variant="dark">
+            <Navbar collapseOnSelect expand="lg" bg="primary" variant="dark">
                 <Container>
-                    <Navbar.Brand href="/">
-                        <img
-                            src={logo}
-                            height="35"
-                            className="d-inline-block align-top"
-                            alt="React Bootstrap logo"
-                        />
+                    <Navbar.Brand as={Link} to="/">
+                        <img className='w-75' src={logo} alt="" />
                     </Navbar.Brand>
-                    <Nav className="ms-auto">
-                        <Nav.Link className='text-white fw-bold' href="/">Home</Nav.Link>
-                        <Nav.Link className='text-white fw-bold' href="/services">Services</Nav.Link>
-                        <Nav.Link className='text-white fw-bold' href="/experts">Our Experts</Nav.Link>
-                    </Nav>
+                    <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+                    <Navbar.Collapse id="responsive-navbar-nav">
+                        <Nav className="me-auto">
+                            <Nav.Link href="#features">Features</Nav.Link>
+                            <Nav.Link href="#pricing">Pricing</Nav.Link>
+                            <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
+                                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
+                                <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
+                                <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+                                <NavDropdown.Divider />
+                                <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+                            </NavDropdown>
+                        </Nav>
+                        <Nav>
+                            <Nav.Link as={Link} to="/about">About</Nav.Link>
+                            <Nav.Link eventKey={2} href="#memes">
+                                Dank memes
+                            </Nav.Link>
+                        </Nav>
+                    </Navbar.Collapse>
                 </Container>
             </Navbar>
         </div>
