@@ -33,7 +33,7 @@ const LogIn = () => {
     }
 
     return (
-        <div className='container w-25 mx-auto mt-5'>
+        <div className='container w-50 mx-auto mt-5'>
             <div className="row">
                 <h1 className='text-primary text-center'>Login</h1>
                 <Form onSubmit={handleSubmit}>
