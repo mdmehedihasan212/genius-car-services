@@ -3,7 +3,7 @@
     margin: 0 auto;
 }
 
-.form-container input {
+.form-container input:not([type=checkbox]) {
     width: 100%;
     height: 40px;
     margin-bottom: 15px;
@@ -23,6 +23,6 @@
 }
 
 .login-btn {
-    color: red;
+    color: blue;
     cursor: pointer;
 }
