@@ -46,11 +46,8 @@ const LogIn = () => {
                         <Form.Label>Password</Form.Label>
                         <Form.Control ref={passwordRef} type="password" placeholder="Password" />
                     </Form.Group>
-                    <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                        <Form.Check type="checkbox" label="Check me out" />
-                    </Form.Group>
-                    <Button variant="primary" type="submit">
-                        Submit
+                    <Button className='w-50 mx-auto d-block mb-2' variant="primary" type="submit">
+                        Login
                     </Button>
                     <p>New a genius car? <Link to={'/register'} className='text-center text-danger' onClick={handleRegistration}>Please Register</Link></p>
                 </Form>
