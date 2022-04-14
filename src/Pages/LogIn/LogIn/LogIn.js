@@ -4,6 +4,7 @@ import { Button, Form } from 'react-bootstrap';
 import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../Firebase.init';
+import Loading from '../../Shared/Loading/Loading';
 import SocialLogIn from '../SocialLogIn/SocialLogIn';
 
 const LogIn = () => {
@@ -15,12 +16,16 @@ const LogIn = () => {
         user
     ] = useSignInWithEmailAndPassword(auth);
 
-    const [sendPasswordResetEmail, error] = useSendPasswordResetEmail(
+    const [sendPasswordResetEmail, error, loading] = useSendPasswordResetEmail(
         auth
     );
 
     const location = useLocation();
     const from = location.state?.from?.pathname || "/";
+
+    if (loading) {
+        <Loading></Loading>
+    }
 
     if (user) {
         navigate(from, { replace: true });
@@ -52,7 +57,6 @@ const LogIn = () => {
                         <Form.Label>Email address</Form.Label>
                         <Form.Control ref={emailRef} type="email" placeholder="Enter email" />
                     </Form.Group>
-
                     <Form.Group className="mb-3" controlId="formBasicPassword">
                         <Form.Label>Password</Form.Label>
                         <Form.Control ref={passwordRef} type="password" placeholder="Password" />
