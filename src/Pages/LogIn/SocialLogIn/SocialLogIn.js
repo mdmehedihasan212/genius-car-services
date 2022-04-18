@@ -5,6 +5,7 @@ import github from '../../../images/social/github.png';
 import { useSignInWithFacebook, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../../../Firebase.init';
 import { useNavigate } from 'react-router-dom';
+import Loading from '../../Shared/Loading/Loading';
 
 const SocialLogIn = () => {
     const navigate = useNavigate();
@@ -12,6 +13,11 @@ const SocialLogIn = () => {
     const [signInWithFacebook, user1, loading1, error1] = useSignInWithFacebook(auth);
 
     let errorMessage;
+
+    if (loading || loading1) {
+        return <Loading></Loading>
+    }
+
     if (error || error1) {
         errorMessage =
             <div>

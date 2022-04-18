@@ -4,16 +4,22 @@ import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-fireb
 import './Register.css';
 import auth from '../../../Firebase.init';
 import SocialLogIn from '../SocialLogIn/SocialLogIn';
+import Loading from '../../Shared/Loading/Loading';
 
 const Register = () => {
     const [agree, setAgree] = useState(false);
     const navigate = useNavigate()
     const [
         createUserWithEmailAndPassword,
-        user
+        user,
+        loading
     ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
 
     const [updateProfile, updating, error] = useUpdateProfile(auth);
+
+    if (loading || updating) {
+        return <Loading></Loading>
+    }
 
     const handleSubmit = async event => {
         event.preventDefault();
