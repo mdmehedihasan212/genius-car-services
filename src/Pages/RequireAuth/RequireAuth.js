@@ -18,15 +18,16 @@ const RequireAuth = ({ children }) => {
 
         return <Navigate to="/login" state={{ from: location }} replace />;
     }
+    console.log(user);
 
-    if (!user.emailVerified) {
+    if (user.providerData[0]?.providerId === 'password' && !user.emailVerified) {
         return <div className='mx-auto' style={{ width: "350px" }}>
             <div className="card-body">
                 <h5 className="card-title">Your email not verified</h5>
+
                 <button className='btn btn-outline-primary' onClick={async () => {
                     await sendEmailVerification();
                     toast("Sent verify email")
-
                 }}
                 >Click verify your email</button>
                 <ToastContainer />
