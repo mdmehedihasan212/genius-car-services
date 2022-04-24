@@ -11,6 +11,7 @@ import Services from './Pages/Home/Services/Services';
 import LogIn from './Pages/LogIn/LogIn/LogIn';
 import Register from './Pages/LogIn/Register/Register';
 import NotFound from './Pages/NotFound/NotFound';
+import Orders from './Pages/Orders/Orders';
 import RequireAuth from './Pages/RequireAuth/RequireAuth';
 import ServiceDetails from './Pages/ServiceDetails/ServiceDetails';
 import Footer from './Pages/Shared/Footer/Footer';
@@ -40,6 +41,11 @@ function App() {
         <Route path='/manageservice' element={
           <RequireAuth>
             <ManageService></ManageService>
+          </RequireAuth>
+        }></Route>
+        <Route path='/orders' element={
+          <RequireAuth>
+            <Orders></Orders>
           </RequireAuth>
         }></Route>
         <Route path='/login' element={<LogIn></LogIn>}></Route>

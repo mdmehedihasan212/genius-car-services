@@ -42,6 +42,7 @@ const CheckOut = () => {
                 const { data } = res;
                 if (data.insertedId) {
                     toast('Your order is Booked')
+                    event.target.reset();
                 }
             })
     }
@@ -50,9 +51,9 @@ const CheckOut = () => {
         <div className='w-50 mx-auto mt-4'>
             <h1>Place Order: {services.name}</h1>
             <form onSubmit={handleToSubmit}>
-                <input className='w-100 mb-2' type="text" name="name" value={user.displayName} placeholder='Name' readOnly disabled />
+                <input className='w-100 mb-2' type="text" name="name" value={user?.displayName} placeholder='Name' readOnly disabled />
                 <br />
-                <input className='w-100 mb-2' type="text" name="email" value={user.email} placeholder='Email' readOnly disabled />
+                <input className='w-100 mb-2' type="text" name="email" value={user?.email} placeholder='Email' readOnly disabled />
                 <br />
                 <input className='w-100 mb-2' type="text" name="service" value={services.name} placeholder='Service Name' readOnly disabled />
                 <br />

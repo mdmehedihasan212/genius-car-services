@@ -36,6 +36,7 @@ const Header = () => {
                                 user && <>
                                     <Nav.Link as={Link} to="/addservice">Add</Nav.Link>
                                     <Nav.Link as={Link} to="/manageservice">Manage</Nav.Link>
+                                    <Nav.Link as={Link} to="/orders">Orders</Nav.Link>
                                 </>
                             }
                             {
