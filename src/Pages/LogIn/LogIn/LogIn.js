@@ -6,7 +6,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../Firebase.init';
 import Loading from '../../Shared/Loading/Loading';
 import SocialLogIn from '../SocialLogIn/SocialLogIn';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import PageName from '../../Shared/PageName/PageName';
 
@@ -78,7 +78,6 @@ const LogIn = () => {
                     <p>Are you forget password? <button className='text-center text-primary btn btn-link' onClick={handlePasswordReset}>Reset Password</button></p>
                 </Form>
             </div>
-            <ToastContainer />
             <SocialLogIn></SocialLogIn>
         </div>
     );
