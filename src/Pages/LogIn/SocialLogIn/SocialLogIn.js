@@ -6,12 +6,14 @@ import { useSignInWithFacebook, useSignInWithGoogle } from 'react-firebase-hooks
 import auth from '../../../Firebase.init';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Loading from '../../Shared/Loading/Loading';
+import useToken from '../../../hooks/useToken';
 
 const SocialLogIn = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
     const [signInWithFacebook, user1, loading1, error1] = useSignInWithFacebook(auth);
+    const [token] = useToken(user || user1);
 
     let errorMessage;
 
@@ -28,7 +30,7 @@ const SocialLogIn = () => {
 
     const from = location.state?.from?.pathname || "/";
 
-    if (user || user1) {
+    if (token) {
         navigate(from, { replace: true });
     }
 

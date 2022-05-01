@@ -1,0 +1,10 @@
+.order-service {
+    align-items: center;
+    justify-content: space-around;
+    border: 1px solid lightgray;
+    height: 90px;
+    width: 500px;
+    margin: 0 auto;
+    margin-top: 20px;
+    padding: 10px;
+}

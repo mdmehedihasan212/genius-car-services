@@ -7,9 +7,9 @@ const ServiceDetails = () => {
     const [services] = useServiceDetails(serviceId)
 
     return (
-        <div>
+        <div className='text-center mt-4'>
             <h1>Service Details Id: {services.name}</h1>
-            <div className='text-center'>
+            <div>
                 <Link to={`/checkout/${serviceId}`}>
                     <button className='btn btn-primary'>Proceed Checkout</button>
                 </Link>

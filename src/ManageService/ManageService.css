@@ -1,0 +1,14 @@
+.manage-service {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border: 1px solid lightgray;
+    height: 90px;
+    width: 400px;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+.manage-service img {
+    height: 40px;
+}

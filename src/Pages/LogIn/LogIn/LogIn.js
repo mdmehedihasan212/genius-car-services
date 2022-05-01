@@ -1,4 +1,3 @@
-import { async } from '@firebase/util';
 import React, { useRef } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
@@ -9,7 +8,7 @@ import SocialLogIn from '../SocialLogIn/SocialLogIn';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import PageName from '../../Shared/PageName/PageName';
-import axios from 'axios';
+import useToken from '../../../hooks/useToken';
 
 const LogIn = () => {
     const emailRef = useRef('');
@@ -24,6 +23,7 @@ const LogIn = () => {
     const [sendPasswordResetEmail, error, sending] = useSendPasswordResetEmail(
         auth
     );
+    const [token] = useToken(user);
 
     const location = useLocation();
     const from = location.state?.from?.pathname || "/";
@@ -32,8 +32,8 @@ const LogIn = () => {
         return <Loading></Loading>
     }
 
-    if (user) {
-        // navigate(from, { replace: true });
+    if (token) {
+        navigate(from, { replace: true });
     }
 
     const handleSubmit = async event => {
@@ -41,9 +41,6 @@ const LogIn = () => {
         const email = emailRef.current.value;
         const password = passwordRef.current.value;
         await signInWithEmailAndPassword(email, password);
-        const { data } = await axios.post('http://localhost:5000/login', { email });
-        localStorage.setItem('accessToken', data.token);
-        navigate(from, { replace: true });
     }
 
     const handleRegistration = event => {

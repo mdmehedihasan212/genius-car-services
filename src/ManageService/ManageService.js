@@ -1,13 +1,14 @@
 import React from 'react';
 import useServices from '../hooks/useServices';
+import './ManageService.css';
+import deleteIcon from '../images/icon/delete.ico';
 
 const ManageService = () => {
     const [services, setServices] = useServices();
-    console.log(services);
     const handleUserDelete = id => {
         const proceed = window.confirm('Are you sure?')
         if (proceed) {
-            const url = `http://localhost:5000/service/${id}`;
+            const url = `https://afternoon-lowlands-28127.herokuapp.com/service/${id}`;
             fetch(url, {
                 method: "DELETE"
             })
@@ -21,11 +22,14 @@ const ManageService = () => {
     }
 
     return (
-        <div className='text-center'>
-            <h1>Manage Service</h1>
+        <div className='text-center mt-4'>
+            <h1>Manage Service: {services.length}</h1>
             {
                 services?.map(service => <div key={service._id}>
-                    <h4>{service.name} <button onClick={() => handleUserDelete(service._id)}>X</button></h4>
+                    <div className='manage-service'>
+                        <h4>{service.name}</h4>
+                        <img onClick={() => handleUserDelete(service._id)} src={deleteIcon} alt="" />
+                    </div>
                 </div>)
             }
         </div>

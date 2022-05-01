@@ -5,6 +5,7 @@ import './Register.css';
 import auth from '../../../Firebase.init';
 import SocialLogIn from '../SocialLogIn/SocialLogIn';
 import Loading from '../../Shared/Loading/Loading';
+import useToken from '../../../hooks/useToken';
 
 const Register = () => {
     const [agree, setAgree] = useState(false);
@@ -16,9 +17,14 @@ const Register = () => {
     ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
 
     const [updateProfile, updating, error] = useUpdateProfile(auth);
+    const [token] = useToken(user);
 
     if (loading || updating) {
         return <Loading></Loading>
+    }
+
+    if (token) {
+        navigate('/');
     }
 
     const handleSubmit = async event => {
@@ -32,7 +38,6 @@ const Register = () => {
         await createUserWithEmailAndPassword(email, password);
         await updateProfile({ displayName: name });
         alert('Updated profile');
-        navigate('/');
 
     }
 
