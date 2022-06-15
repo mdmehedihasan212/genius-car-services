@@ -10,7 +10,7 @@ const Services = () => {
         fetch('https://afternoon-lowlands-28127.herokuapp.com/service')
             .then(res => res.json())
             .then(data => setServices(data))
-    }, [])
+    }, [setServices])
 
     return (
         <div id='service' className='container'>

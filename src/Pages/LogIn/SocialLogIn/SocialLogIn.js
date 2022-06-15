@@ -7,6 +7,7 @@ import auth from '../../../Firebase.init';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Loading from '../../Shared/Loading/Loading';
 import useToken from '../../../hooks/useToken';
+import { useEffect } from 'react';
 
 const SocialLogIn = () => {
     const navigate = useNavigate();
@@ -15,8 +16,15 @@ const SocialLogIn = () => {
     const [signInWithFacebook, user1, loading1, error1] = useSignInWithFacebook(auth);
     const [token] = useToken(user || user1);
 
-    let errorMessage;
+    const from = location.state?.from?.pathname || "/";
 
+    useEffect(() => {
+        if (token) {
+            navigate(from, { replace: true });
+        }
+    }, [token, from, navigate])
+
+    let errorMessage;
     if (loading || loading1) {
         return <Loading></Loading>
     }
@@ -26,12 +34,6 @@ const SocialLogIn = () => {
             <div>
                 <p className='text-danger text-center'>Error: {error?.message} {error1?.message}</p>
             </div>
-    }
-
-    const from = location.state?.from?.pathname || "/";
-
-    if (token) {
-        navigate(from, { replace: true });
     }
 
     return (

@@ -4,9 +4,9 @@ import { toast } from 'react-toastify';
 
 const AddService = () => {
     const { register, handleSubmit } = useForm();
+
     const onSubmit = data => {
-        console.log(data)
-        const url = `https://afternoon-lowlands-28127.herokuapp.com/service`;
+        const url = 'https://afternoon-lowlands-28127.herokuapp.com/service';
         fetch(url, {
             method: "POST",
             headers: {
@@ -16,10 +16,10 @@ const AddService = () => {
         })
             .then(res => res.json())
             .then(result => {
-                console.log(result);
                 toast('Successfully Added!!!')
             })
     };
+
     return (
         <div className='w-50 mx-auto mt-4'>
             <h1 className='text-center'>Please add services</h1>
@@ -28,7 +28,7 @@ const AddService = () => {
                 <textarea className='mb-2' placeholder='Description' {...register("description")} />
                 <input className='mb-2' placeholder='Price' type="number" {...register("price")} />
                 <input className='mb-2' placeholder='Photo Url' type="text" {...register("img")} />
-                <input className='btn btn-primary mb-2' type="Submit" value={'Add Service'} />
+                <input className='btn btn-primary mb-2' type="Submit" value='Add Service' />
             </form>
         </div>
     );

@@ -30,7 +30,7 @@ const Orders = () => {
         getPost();
 
 
-    }, [user])
+    }, [user, navigate])
 
     return (
         <div className='text-center mt-4'>
